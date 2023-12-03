@@ -3,6 +3,7 @@ import GameCircle from "./GameCircle";
 import '../game.css';
 import Header from "./Header";
 import { Footer } from "./Footer";
+import { isWinner } from "../helper";
 
 const NO_CIRCLES = 16;
 const NO_PLAYER = 0;
@@ -18,6 +19,10 @@ const GameBoard = () => {
 
     const circleClicked = (id) => {
         console.log('Circle clicked: ' + id);
+
+        if(isWinner(gameBoard, id, currentPlayer)) {
+            console.log("Winner");
+        }
 
         //copy of array and updating it
         // const board = [...gameBoard];
