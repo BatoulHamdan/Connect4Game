@@ -4,11 +4,14 @@ import '../game.css';
 import Header from "./Header";
 import { Footer } from "./Footer";
 import { isWinner } from "../helper";
-
-const NO_CIRCLES = 16;
-const NO_PLAYER = 0;
-const PLAYER_1 = 1;
-const PLAYER_2 = 2;
+import { 
+    GAME_STATE_PLAYING, 
+    GAME_STATE_WIN, 
+    NO_PLAYER, 
+    PLAYER_1, 
+    PLAYER_2,
+    NO_CIRCLES 
+} from "../Constants";
 
 const GameBoard = () => {
     const [gameBoard, setGameBoard] = useState(Array(NO_CIRCLES).fill(NO_PLAYER));
@@ -17,11 +20,18 @@ const GameBoard = () => {
     //initial player is player 1
     const [currentPlayer, setCurrentPlayer] = useState(PLAYER_1);
 
+    //Game state
+    const [gameState, setGameState] = useState(GAME_STATE_PLAYING);
+
+    const [winPlayer, setWinPlayer] = useState(NO_PLAYER);
+
     const circleClicked = (id) => {
         console.log('Circle clicked: ' + id);
 
         if(isWinner(gameBoard, id, currentPlayer)) {
             console.log("Winner");
+            setGameState(GAME_STATE_WIN);
+            setWinPlayer(currentPlayer);
         }
 
         //copy of array and updating it
@@ -63,7 +73,7 @@ const GameBoard = () => {
 
     return (
         <>
-            <Header player={currentPlayer} />
+            <Header gameState={gameState} player={currentPlayer} winPlayer={winPlayer} />
             <div className="gameBoard">
                 {initBoard()}
             </div>
