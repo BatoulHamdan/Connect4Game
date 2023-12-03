@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import GameCircle from "./GameCircle";
 import '../game.css';
-import { render } from "@testing-library/react";
+import Header from "./Header";
+import { Footer } from "./Footer";
 
 const NO_CIRCLES = 16;
 const NO_PLAYER = 0;
@@ -56,9 +57,13 @@ const GameBoard = () => {
     }
 
     return (
-        <div className="gameBoard">
-            {initBoard()}
-        </div>
+        <>
+            <Header />
+            <div className="gameBoard">
+                {initBoard()}
+            </div>
+            <Footer />
+        </>
     )
 }
 
