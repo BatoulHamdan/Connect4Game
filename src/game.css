@@ -11,7 +11,7 @@
 
     --player-no-player: white;
     --player-player1: red;
-    --player-player2: green;
+    --player-player2: blue;
 }
 
 body {
@@ -53,6 +53,7 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
+    text-align: center;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
@@ -83,6 +84,7 @@ body {
 
 .footer button:hover {
     background-color: var(--footer-button-background-color-hover);
+    cursor: pointer;
 }
 
 .gameBoard {
@@ -108,6 +110,10 @@ body {
     margin: 10px;
     border-radius: 50%;
     border: 5px solid black;
+}
+
+.gameCircle:hover {
+    cursor: pointer;
 }
 
 .player_0 {
